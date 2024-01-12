@@ -1,0 +1,18 @@
+body {
+    background-color: aliceblue !important;
+}
+
+img {
+    object-fit: contain;
+    background-color: black;
+}
+
+.img-banner {
+    background-image: url("../assets/img_pc_banner.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: black;
+    height: 500px;
+    color: whitesmoke;
+}

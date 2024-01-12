@@ -1,0 +1,40 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+<div class="img-banner">
+    <h1 class="w-25 p-4">Bienvenido(a) a la página de inicio</h1>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-4">
+        <div class="card text-bg-primary">
+            <div class="card-body">
+                <h4>Clientes</h4>
+                <h4>{{clientes}}</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="card text-bg-secondary">
+            <div class="card-body">
+                <h4>Categorías</h4>
+                <h4>{{categorias}}</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="card text-bg-success">
+            <div class="card-body">
+                <h4>Productos</h4>
+                <h4>{{productos}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

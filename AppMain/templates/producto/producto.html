@@ -1,0 +1,91 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+<div class="card">
+    <h3 class="card-body py-2">Producto</h3>
+</div>
+
+<br />
+
+<div class="card">
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-8">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCliente">
+                    Crear nuevo producto
+                </button>
+            </div>
+            
+            <div class="col-4">
+                <form action="{% url 'buscar_producto' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-8">
+                            <input type="text" placeholder="Buscar por nombre" id="nombre" name="nombre" class="form-control">
+                        </div>
+                        <div class="col-4">
+                            <input type="submit" value="Buscar" class="btn btn-secondary w-100">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+        
+        <table class="table table-bordered mt-3">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Categoria</th>
+                    <th>Stock</th>
+                    <th>Precio</th>
+                    <th>Activo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{producto.id}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.descripcion}}</td>
+                    <td>{{producto.categoria.nombre}}</td>
+                    <td>{{producto.stock}}</td>
+                    <td>S/.{{producto.precio}}</td>
+                    <td>{% if producto.activo %}✅{% else %}❌{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalCliente" tabindex="-1" aria-labelledby="modalClienteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalClienteLabel">Crear nuevo producto</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form method="post" id="form_producto" action="/producto">
+                {% csrf_token %}
+                <div class="modal-body">
+                        {{ form.as_p }}
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" value="Crear" class="btn btn-primary"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

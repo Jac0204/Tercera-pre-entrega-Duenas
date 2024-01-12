@@ -1,0 +1,42 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+<div class="card">
+    <h3 class="card-body py-2">Producto > Buscar Producto</h3>
+</div>
+
+<br />
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-bordered mt-3">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Categoria</th>
+                    <th>Stock</th>
+                    <th>Precio</th>
+                    <th>Activo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{producto.id}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.descripcion}}</td>
+                    <td>{{producto.categoria.nombre}}</td>
+                    <td>{{producto.stock}}</td>
+                    <td>S/.{{producto.precio}}</td>
+                    <td>{% if producto.activo %}✅{% else %}❌{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

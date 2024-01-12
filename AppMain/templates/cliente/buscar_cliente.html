@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+<div class="card">
+    <h3 class="card-body py-2">Cliente > Buscar Cliente</h3>
+</div>
+
+<br />
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-bordered mt-3">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre Completo</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>DNI</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{cliente.id}}</td>
+                    <td>{{cliente.nombre_completo}}</td>
+                    <td>{{cliente.fecha_nacimiento}}</td>
+                    <td>{{cliente.dni}}</td>
+                    <td>{{cliente.email}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
